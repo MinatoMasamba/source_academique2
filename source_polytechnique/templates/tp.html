@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block page_title %}TP | Source Academique{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/accueil.css' %}">
+    <style>
+
+
+/* En-tête de la page */
+header {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur */
+}
+
+header:hover {
+    transform: translateX(5px);
+}
+
+.header-frame {
+    font-family: 'Grand Hotel', cursive;
+    background-color: #007bb5; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    width: 100%; /* Prendre toute la largeur */
+}
+
+/* Media Queries pour les téléphones portables */
+@media (max-width: 768px) {
+    header {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .header-frame {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        width: 100%; /* Prendre toute la largeur */
+    }
+
+    .header-frame h1 {
+        font-size: 20px;
+    }
+
+    .header-frame .logout-button {
+        margin-top: 10px;
+    }
+}
+
+
+/* Barre de navigation latérale */
+.nav-frame {
+    top: 10dvh;
+    left: -2dvh;
+    width: 100%;
+    background-color: #333;
+    border-radius: 12px;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Ajout pour permettre le défilement */
+    position: relative; /* Permet au menu de défiler avec le contenu */
+    height: 300dvh; /* Pour que la barre de navigation prenne la hauteur nécessaire */
+}
+
+
+.nav-frame ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-frame ul li {
+    
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Ombre portée */ 
+    padding: 10px; margin: 10px;
+    border-radius: 10px; /* Arrondi des coins */
+    transition: background-color 0.3s;
+    width: 80px;
+}
+
+.nav-frame ul li a {
+    
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    font-weight: bold;
+    
+}
+
+.nav-frame ul li:hover {
+    background-color: #575757;
+}
+@media (max-width: 768px){
+    .nav-frame {
+        top: 8dvh;
+        width: 800dvb;
+        left: -1dvh;
+    }
+    .nav-frame ul {
+        top: 20dvh;
+        margin: 15px 0;
+    }
+    .nav-frame ul li {
+        top: 20dvh;
+        margin: 15px 0;
+        width: 60px;
+        transition: background-color 0.3s;
+    }
+
+    .nav-frame ul li a {
+        top: 50px;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        font-weight: bold;
+
+    }
+}
+/* Contenu principal */
+.content-frame {
+    flex-grow: 1;
+    top: -304dvh;
+    left: -10dvh;
+    min-width: auto;
+    width: 100%; /* Prend en compte la largeur de la navigation et des marges */
+    height: 300dvh; /* S'adapte à la hauteur du contenu */
+    min-height: 100vh; /* Prend la hauteur de l'écran au minimum */
+    background-color: #c2baba;
+    border-radius: 20px;
+    padding: 30px;
+    margin-left: 170px; /* Laisse de l'espace pour la barre de navigation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow-y: auto; /* Permet le défilement si le contenu dépasse */
+    box-sizing: border-box; /* Inclut padding et bordure dans le calcul de la largeur */
+}
+
+.content-frame h2{
+    font-family: 'Grand Hotel', cursive;
+}
+
+/* Media Queries pour les téléphones portables */ 
+@media (max-width: 768px) { 
+    .content-frame { 
+    left: 12dvh;
+    min-width: auto;
+    width: 100%; /* Prend en compte la largeur de la navigation et des marges */
+    height: 300dvh; /* S'adapte à la hauteur du contenu */
+    min-height: 100vh; /* Prend la hauteur de l'écran au minimum */
+    background-color: #c2baba;
+        padding: 15px; /* Réduit le padding */ 
+        margin-left: 0; /* Enlève la marge gauche */ 
+        border-radius: 20px; /* Ajuste le rayon des bordures */ 
+        overflow-y:None;
+        overflow-x: None;
+    } 
+        .content-frame h2 { font-size: 20px; /* Ajuste la taille de la police */
+         }
+        }
+/* Style pour les tables */
+.table-matiere, .table-cours, .table-etudiants {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-matiere th, .table-matiere td, .table-cours th, .table-cours td, .table-etudiants th, .table-etudiants td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.table-matiere th, .table-cours th, .table-etudiants th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.table-matiere tbody tr:hover, .table-cours tbody tr:hover, .table-etudiants tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Styles pour les images de profil */
+.student-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.student-profile-img:hover {
+    transform: scale(1.2);
+}
+
+/* Styles pour la section des départements */
+.department {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Liste des cours proposés */
+.courses ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.courses li {
+    background-color: #e0e7ff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Conteneur général */
+.container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: #d4cdcd;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+@media (max-width: 768px) { 
+    .container { 
+        padding: 10px; /* Réduit le padding pour les petits écrans */ 
+        gap: 2px; /* Réduit l'espace entre les éléments */ 
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+}
+/* Footer */
+footer {
+    width: 100%;
+    padding: 20px;
+}
+
+footer .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+footer .grid-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries pour les téléphones portables */
+@media (max-width: 768px) {
+    footer .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Deux colonnes sur mobile */
+    }
+}
+
+/* Cercle de connexion */
+.login-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #007bb5;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    transition: transform 0.3s ease; /* Animation fluide */
+}
+
+.login-circle img {
+    width: 100%;
+    height: auto;
+    
+}
+
+.login-circle:hover {
+    transform: scale(1.2); /* Agrandit l'image à 120% lors du survol */
+}
+@media (max-width: 768px) {
+    .login-circle{
+    width: 40px;
+    height: 40px;
+    right: 2%;
+    top: 0%;
+    }
+
+}
+
+    </style>
+</head>
+<body>
+
+<header class="header-frame">
+    <h1>{% block header_title %}Bienvenue sur Source Académique{% endblock %}</h1>
+    <h4 class="login-circle">
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">
+                {% if user.profile.photo %}
+                    <img src="{{ user.profile.photo.url }}" alt="Photo de profil de {{ user.username }}">
+                {% else %}
+                    <img src="{% static 'css/profile_default.png' %}" alt="Photo de profil par défaut">
+                {% endif %}
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}"><img src="{% static 'css/profile_default.png' %}" alt="Se connecter"></a>
+        {% endif %}
+    </h4>
+</header>
+
+<div class="container">
+    <nav class="nav-frame">
+        <ul>
+            <li><a href="{% url 'accueil' %}">Accueil</a></li>
+            <li><a href="{% url 'exam' %}">Examens</a></li>
+            <li><a href="{% url 'note' %}">Notes</a></li>
+            <li><a href="{% url 'interro' %}">Interros</a></li>
+            <li style="background-color:#575757 ;"><a href="{% url 'tp' %}">TP</a></li>
+
+        </ul>
+    </nav>
+
+    <main class="content-frame">
+        <h2>Travaux Pratique disponibles :</h2>
+        <table class="table-cours">
+            <thead>
+                <tr>
+                    <th>Nom du fichier</th>
+                    <th>Promotion</th>
+                    <th>Année</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for exam in tps %}
+                <tr>
+                    <td><a href="{{ exam.fichier.url }}">{{ exam.titre }}</a></td>
+                    <td>{{ exam.promotion }}</td>
+                    <td>{{ exam.date_donnee }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">Aucun Tps trouvé</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <!-- Pied de page -->
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Section 1</h3>
+                <div class="sub-grid">
+                    {% if messages %}
+                        <ul>
+                        {% for message in messages %}
+                            <li><strong>{{ message.title }}</strong><br>{{ message.content }}<br><small>Envoyé le {{ message.created_at }}</small></li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>Aucun message pour l'instant.</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="grid-item">
+                <h3>Section 2</h3>
+                <div class="sub-grid">
+                    <div><p>Contenu de la deuxième section, sous-partie 1.</p></div>
+                    <div><p>Contenu de la deuxième section, sous-partie 2.</p></div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <h3>Section 3</h3>
+                <div class="sub-grid">
+                    <div><p>Contenu de la troisième section, sous-partie 1.</p></div>
+                    <div><p>Contenu de la troisième section, sous-partie 2.</p></div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <h3>Section 4</h3>
+                <div class="sub-grid">
+                    <div><p>Contenu de la quatrième section, sous-partie 1.</p></div>
+                    <div><p>Contenu de la quatrième section, sous-partie 2.</p></div>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
+</div>
+
+</body>
+</html>

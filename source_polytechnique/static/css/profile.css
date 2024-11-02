@@ -1,0 +1,292 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5; /* Couleur de fond douce */
+    margin: 0;
+    padding: 20px;
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: white; /* Couleur de fond du profil */
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Arrondir les coins de l'image de profil */
+}
+
+.header {
+    background-color: #3b5998; /* Couleur de l'en-tête */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.logout-button {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background-color: #ff4d4d; /* Couleur du bouton de déconnexion */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profile-picture-container {
+    text-align: center;
+    background-color: #e9eff1; /* Couleur d'arrière-plan pour la photo de profil */
+    padding: 20px;
+}
+
+.profile-picture {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 70%; /* Arrondi complet pour la photo de profil */
+    overflow: hidden; /* Couper tout ce qui déborde */
+    border: 3px solid #ccc; /* Bordure de la photo de profil */
+}
+
+.profile-picture img {
+    width: 100%;
+    height: auto; /* Garder les proportions */
+    border-radius: 20%; /* Arrondi complet pour l'image */
+}
+
+.profile-info {
+    padding: 20px;
+}
+
+.profile-info h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.update-button {
+    background-color: #3b5998; /* Couleur du bouton de mise à jour */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.update-button:hover {
+    background-color: #365e8c; /* Couleur du bouton au survol */
+}
+.message {
+    background-color: #d4edda; /* Vert clair */
+    color: #155724; /* Couleur du texte */
+    border: 1px solid #c3e6cb; /* Bordure verte */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+
+      /* En-tête */
+      .header-frame {
+        background-color: #268149; /* Couleur de fond */
+        color: #fff; /* Couleur du texte */
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* Barre de navigation latérale */
+    .nav-frame {
+        width: 150px;
+        background-color: #333;
+        border-radius: 12px;
+        padding-top: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        overflow-y: auto; /* Ajout pour permettre le défilement */
+        position: relative; /* Permet au menu de défiler avec le contenu */
+        height: 300dvh; /* Pour que la barre de navigation prenne la hauteur nécessaire */
+    }
+    
+    
+    .nav-frame ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .nav-frame ul li {
+        margin: 15px 0;
+    }
+    
+    .nav-frame ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    
+    .nav-frame ul li a:hover {
+        background-color: #575757;
+    }
+    
+    /* Contenu principal */
+    .content-frame {
+        top: -303vh;
+        width: calc(100% - 170px); /* Prend en compte la largeur de la navigation et des marges */
+        height: 300dvh; /* S'adapte à la hauteur du contenu */
+        min-height: 100vh; /* Prend la hauteur de l'écran au minimum */
+        background-color: #c2baba;
+        border-radius: 20px;
+        padding: 30px;
+        margin-left: 170px; /* Laisse de l'espace pour la barre de navigation */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow-y: auto; /* Permet le défilement si le contenu dépasse */
+        box-sizing: border-box; /* Inclut padding et bordure dans le calcul de la largeur */
+    }
+    
+    
+    /* Style pour les tables */
+    .table-matiere, .table-cours, .table-etudiants {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .table-matiere th, .table-matiere td, .table-cours th, .table-cours td, .table-etudiants th, .table-etudiants td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    
+    .table-matiere th, .table-cours th, .table-etudiants th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    
+    .table-matiere tbody tr:hover, .table-cours tbody tr:hover, .table-etudiants tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+    
+    /* Styles pour les images de profil */
+    .student-profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .student-profile-img:hover {
+        transform: scale(1.2);
+    }
+    
+    /* Styles pour la section des départements */
+    .department {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+    
+    /* Liste des cours proposés */
+    .courses ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .courses li {
+        background-color: #e0e7ff;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    
+    /* Conteneur général */
+    .container {
+        position: relative;
+        
+        width: 100%;
+        min-height: 100vh;
+        padding: 20px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        background-color: #d4cdcd;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    /* Footer */
+    footer {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    footer .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    
+    footer .grid-item {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Cercle de connexion */
+    .login-circle {
+        width: 50px;
+        height: 50px;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .login-circle img {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* Désactivation de la barre de défilement horizontale */
+    body {
+        overflow-x: hidden;
+    }
+    

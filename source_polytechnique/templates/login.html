@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | Source Academique</title>
+    <link rel="stylesheet" href="{% static 'css/connexion.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Source Academique</h1>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.password }}
+                <button type="submit">Connexion</button>
+            </form>
+            <div class="separator">
+                <span>OU</span>
+            </div>
+            <div class="social-login">
+                <a href="#">Se connecter avec Facebook</a>
+            </div>
+            <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+        </div>
+        <div class="signup-box">
+            <p>Vous n'avez pas de compte ? <a href="{% url 'register' %}">Inscrivez-vous</a></p>
+        </div>
+    </div>
+    {%if messages %}
+        {%for i in message %}
+        <p>{{i}}</p>
+        {%endfor%}
+    {% else %}
+        <p> rine comment message</p>
+    {%endif%}
+</body>
+</html>

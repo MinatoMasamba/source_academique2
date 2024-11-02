@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    <div class="profile-container">
+        <header class="header">
+            <h1>{{ profile.user.username }}</h1>
+            <a href="{% url 'logout' %}" class="logout-button">Déconnexion</a>
+        </header>
+
+        <div class="profile-picture-container">
+            <div class="profile-picture">
+                {% if profile.photo %}
+                    <img src="{{ profile.photo.url }}" alt="Photo de Profil">
+                {% else %}
+                    <img src="{% static 'images/default_profile.png' %}" alt="Photo de Profil par défaut">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="profile-info">
+            <h2>Informations du Profil</h2>
+
+            <!-- Message de confirmation -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST" action="{% url 'profile' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_first_name">Prénom:</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_last_name">Nom:</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_photo">Photo de Profil:</label>
+                    {{ form.photo }}
+                </div>
+                <div class="form-group">
+                    <label for="id_promotion">Promotion:</label>
+                    {{ form.promotion }}
+                </div>
+                <div class="form-group">
+                    <label for="id_numero_whatsapp">Numéro WhatsApp:</label>
+                    {{ form.numero_whatsapp }}
+                </div>
+                <button type="submit" class="update-button">Mettre à jour</button>
+            </form>
+
+            <!-- Lien pour revenir à l'accueil -->
+            <div class="home-link">
+                <a href="{% url 'accueil' %}" class="home-button">Retour à l'accueil</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
